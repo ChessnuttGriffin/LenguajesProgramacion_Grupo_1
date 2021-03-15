@@ -43,3 +43,11 @@
 <stopCase>::= "break" <Fin_linea>
 <variableEntera>::= <NombreVariable>
 
+
+							// Metodos //
+<Metodo>::= <Retorno> <NombreMetodo> "(" <Parametros> ")" "{" <Cuerpo> <Return>
+<Fin_Linea> "}"
+<Cuerpo>::= <BloqueLineas>
+<Retorno>::= "int" | "String" | "float" | "boolean" | "ε"
+<Return>::= "return" "=" <Entero> | "ε" | "return" "=" <NombreVariable>
+
