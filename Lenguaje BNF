@@ -6,13 +6,11 @@
 <Fin_Linea>::= ";"
 <Instruccion>::= <Ciclo_if> |  <CicloCase> | <Aritmetica> | <Ciclo_While> | <CicloDoWhile> | <Ciclo_FOR> | <Metodo> | <ImprimirEnPantalla> | <CapturarDatos> | <Arreglo>
 
-
 						//CICLO IF//
 <Ciclo_if>::= <CondicionalSimple> | CondicionalCompuesto
 <CondicionalSimple>::= "if" <Condicion> "{" <BloqueLineas> "}"
-<CondicionalCompuesto>::= "if" <Condicion> "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" |
-"if" <Condicion> "{" <BloqueLineas> "}" "elif" "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
-
+<CondicionalCompuesto>::= "if" <Condicion> "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
+			  | "if" <Condicion> "{" <BloqueLineas> "}" "elif" "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
 
 						//CICLO WHILE//
 <Ciclo_While>::= "while" <Condicion> "{" <BloqueLineas> "}"
@@ -20,92 +18,71 @@
 <Booleano>::= "1" | "0" | "True" | "False" | <TerminoSinCadena> <OperadorBool> <TerminoSinCadena> 
 				| <Cadena> "==" <Cadena> | <Cadena> "!=" <Cadena>
 <OperadorBool>::= "==" | "<" | ">" | "<=" | ">=" | "!=" 
-                                               
-					       
+                                               					       
 					       //CICLO DO WHILE//
 <CicloDoWhile>::= "do" "{"<BloqueLineas> "}" "while" <Condicion>
 							
-							//CICLO FOR//
-<Ciclo_FOR>::= "for" "(" <PrimerElemento> ; <SegundoElemento> ; <TercerElemento> ")" "{"
-<BloqueLineas> "}"
+						//CICLO FOR//
+<Ciclo_FOR>::= "for" "(" <PrimerElemento> ; <SegundoElemento> ; <TercerElemento> ")" "{" <BloqueLineas> "}"
 <PrimerElemento>::= <variableEntera> | <AsignarTipo1> | <AsignarTipo2>
 <SegundoElemento>::= <variableEntera> <OperadorBool> <Entero>
 <TercerElemento>::= <AumentoFor> | <DecrementoFor>
-<AumentoFor>::= "++" | <variableEntera> "=+" <EnteroSinSigno> | <variableEntera> "=+"
-<variableEntera>
-<DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"<variableEntera>//
-                                                       
+<AumentoFor>::= "++" | <variableEntera> "=+" <EnteroSinSigno> | <variableEntera> "=+" <variableEntera>
+<DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"<variableEntera>
+
 						       //Ciclo Case//
-<CicloCase>::=
-"switch" "(" <variableEntera> ")" "{" <bloqueCase> "}"|"switch" "("
-<variableEntera> ")" "{" <bloqueCase> "}" <bloqueDefecto><bloqueDefecto>::= "default" ":" "{"<BloqueLineas>"}" <Fin_Linea>
-<bloqueCase>::= "case"<Entero> ":" "{" <Bloque linea> "}" <stopCase> |<bloqueCase> "case"
-<Entero> ":" "{" <BloqueLineas> "}"
+<CicloCase>::= "switch" "(" <variableEntera> ")" "{" <bloqueCase> "}" | "switch" "(" <variableEntera> ")" "{" <bloqueCase> "}" <bloqueDefecto>
+<bloqueDefecto>::= "default" ":" "{"<BloqueLineas>"}" <Fin_Linea>
+<bloqueCase>::= "case"<Entero> ":" "{" <Bloque linea> "}" <stopCase> | <bloqueCase> "case" <Entero> ":" "{" <BloqueLineas> "}"
 <stopCase>::= "break" <Fin_linea>
 <variableEntera>::= <NombreVariable>
 
 							// Metodos //
-<Metodo>::= <Retorno> <NombreMetodo> "(" <Parametros> ")" "{" <Cuerpo> <Return>
-<Fin_Linea> "}"
+<Metodo>::= <Retorno> <NombreMetodo> "(" <Parametros> ")" "{" <Cuerpo> <Return> <Fin_Linea> "}"
 <Cuerpo>::= <BloqueLineas>
 <Retorno>::= "int" | "String" | "float" | "boolean" | "ε"
 <Return>::= "return" "=" <Entero> | "ε" | "return" "=" <NombreVariable>
 
 						// llamado a metodos //
-<LlamadoMetodo>::= <nombreMetodo> "(" <parametros> ")"|<nombreMetodo> "("<ConjuntoVariables> ")"
+<LlamadoMetodo>::= <nombreMetodo> "(" <parametros> ")" | <nombreMetodo> "("<ConjuntoVariables> ")"
 <NombreMetodo>::= <Cadena>
-<Parametros>::- "ε" | <ConjuntoVariables>
-<ConjuntoVariables>::- <Variable> | <ConjuntoVariables> "," <Variable>
+<Parametros>::= "ε" | <ConjuntoVariables>
+<ConjuntoVariables>::= <Variable> | <ConjuntoVariables> "," <Variable>
 
                                                  //Arreglos
 <Arreglo>::= <ArregloUnidimencional> | <ArregloBidimencional>
 <ValorArregloUnidimencional>::= <NombreVariable>"[" <EnteroSinSigno> "]"
-<ValorArregloBidimencional>::= <NombreVariable>"[" <EnteroSinSigno> "]" "["
-<EnteroSinSigno> "]"
+<ValorArregloBidimencional>::= <NombreVariable>"[" <EnteroSinSigno> "]" "[" <EnteroSinSigno> "]"
+
 <ArregloUnidimencional>::= <ArregloNoString> | <ArregloString>
-<ArregloNoString>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]"
-| "int" <NombreVariable> "[""]" "=" "{"
-<ElementosArregloEntero> "}"
-| "float" <NombreVariable> "[""]" "=" "{"
-<ElementosArregloFloat> "}"
-<ArregloString>::= "String" <NombreVariable> "[""]" "=" "{" <ElementosArregloString> "}"
-| "String" <NombreVariable> "[" EnteroSinSigno "]"
+
+<ArregloNoString>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]" | "int" <NombreVariable> "[""]" "=" "{" <ElementosArregloEntero> "}" 
+			| "float" <NombreVariable> "[""]" "=" "{" <ElementosArregloFloat> "}"
+<ArregloString>::= "String" <NombreVariable> "[""]" "=" "{" <ElementosArregloString> "}" | "String" <NombreVariable> "[" EnteroSinSigno "]"
 
 <TipoDato>::= "int" | "float"
 <ElementosArregloEntero>::= <Entero> | <ElementosArregloEntero> "," <Entero>
 <ElementosArregloFloat>::= <Real> | <ElementosArregloReal> "," <Real>
-<ElementosArregloString>::= " ' " <Cadena> " ' " | <ElementosArregloString> "," " ' " <Cadena> " '
-"
-<ArregloBidimencional>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]" "["
-EnteroSinSigno "]"
-| "String" <NombreVariable> "[" EnteroSinSigno "]""["
-EnteroSinSigno "]"
+<ElementosArregloString>::= " ' " <Cadena> " ' " | <ElementosArregloString> "," " ' " <Cadena> " ' "
+
+<ArregloBidimencional>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]" "[" EnteroSinSigno "]"
+			| "String" <NombreVariable> "[" EnteroSinSigno "]""[" EnteroSinSigno "]"
 
 						// Operaciones Aritmeticas //
 <Aritmetica>::= <ElementoGeneral> <Operador_Aritmético> <ElementoGeneral>
-<ElementoGeneral>::= <Variable> | <ConstanteSinCadena> | <ValorArregloBidimencional> |
-<ValorArregloUnidimencional>
+
+<ElementoGeneral>::= <Variable> | <ConstanteSinCadena> | <ValorArregloBidimencional> | <ValorArregloUnidimencional>
 <ElementoEntero>::= <Variable> | <Entero>
 <ElementoReal>::= <Variable> | <Real>
 <Operador_Aritmético>::= "+" | "-" | "*" | "/"
 <Variable>::= <NombreVariable> | <AsignarVariable>
 <AsignarVariable>::= <AsignarTipo1> | <AsignarTipo2> | <AsignarTipo3>
-<AsignarTipo1>::=
-<AsignarTipo2>::=
-<ElementoEntero>
-"int" <NombreVariable> "=" <Entero>
-| "float" <NombreVariable> "=" <Real>
-"int" <NombreVariable> "=" <ElementoEntero> <Operador_Aritmético>
-| "float" <NombreVariable> "=" <ElementoReal>
-<Operador_Aritmético> <ElementoReal>
-<AsignarTipo3>::= | <NombreVariable> "=" <NombreVariable>
-| "String" <NombreVariable> "=" " " " <Cadena> " " "
-//Ejemplo String Variable1 = "Nuevo Programa"
-| "boolean" <NombreVariable> "=" "True" | "False"
-<ImprimirEnPantalla>::= "Escribir" "<<" "(" <Contenido> ")" | <ImprimirEnPantalla> "Escribir"
-"(" <Contenido> ")"
-<Contenido>::= " " " <Cadena> " " " | <NombreVariable> | <Contenido> "+" <NombreVariable> |
-<Contenido> "+" " " " <Cadena> " " "
+<AsignarTipo1>::= "int" <NombreVariable> "=" <Entero> | "float" <NombreVariable> "=" <Real>
+<AsignarTipo2>::= "int" <NombreVariable> "=" <ElementoEntero> <Operador_Aritmético> <ElementoEntero> | "float" <NombreVariable> "=" <ElementoReal> <Operador_Aritmético> <ElementoReal>
+<AsignarTipo3>::= <NombreVariable> "=" <NombreVariable> | "String" <NombreVariable> "=" " " " <Cadena> " " " | "boolean" <NombreVariable> "=" "True" | "False"
+
+<ImprimirEnPantalla>::= "Escribir" "<<" "(" <Contenido> ")" | <ImprimirEnPantalla> "Escribir" "(" <Contenido> ")"
+<Contenido>::= " " " <Cadena> " " " | <NombreVariable> | <Contenido> "+" <NombreVariable> | <Contenido> "+" " " " <Cadena> " " "
 <CapturarDatos>::= "Leer" ">>" <NombreVariable>
 
 <NombreVariable>::= <Cadena>
