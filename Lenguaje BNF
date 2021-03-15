@@ -80,3 +80,20 @@
 EnteroSinSigno "]"
 | "String" <NombreVariable> "[" EnteroSinSigno "]""["
 EnteroSinSigno "]"
+
+						// Operaciones Aritmeticas //
+<Aritmetica>::= <ElementoGeneral> <Operador_Aritmético> <ElementoGeneral>
+<ElementoGeneral>::= <Variable> | <ConstanteSinCadena> | <ValorArregloBidimencional> |
+<ValorArregloUnidimencional>
+<ElementoEntero>::= <Variable> | <Entero>
+<ElementoReal>::= <Variable> | <Real>
+<Operador_Aritmético>::= "+" | "-" | "*" | "/"
+<Variable>::= <NombreVariable> | <AsignarVariable>
+<AsignarVariable>::= <AsignarTipo1> | <AsignarTipo2> | <AsignarTipo3>
+<AsignarTipo1>::=
+<AsignarTipo2>::=
+<ElementoEntero>
+"int" <NombreVariable> "=" <Entero>
+| "float" <NombreVariable> "=" <Real>
+"int" <NombreVariable> "=" <ElementoEntero> <Operador_Aritmético>
+| "float" <NombreVariable> "=" <ElementoReal>
