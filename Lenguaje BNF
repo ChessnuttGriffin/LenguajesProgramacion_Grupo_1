@@ -21,3 +21,14 @@
                                                
 					       //CICLO DO WHILE//
 <CicloDoWhile>::= "do" "{"<BloqueLineas> "}" "while" <Condicion>
+							//CICLO FOR//
+<Ciclo_FOR>::= "for" "(" <PrimerElemento> ; <SegundoElemento> ; <TercerElemento> ")" "{"
+<BloqueLineas> "}"
+<PrimerElemento>::= <variableEntera> | <AsignarTipo1> | <AsignarTipo2>
+<SegundoElemento>::= <variableEntera> <OperadorBool> <Entero>
+<TercerElemento>::= <AumentoFor> | <DecrementoFor>
+<AumentoFor>::= "++" | <variableEntera> "=+" <EnteroSinSigno> | <variableEntera> "=+"
+<variableEntera>
+<DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"
+<variableEntera>
+
