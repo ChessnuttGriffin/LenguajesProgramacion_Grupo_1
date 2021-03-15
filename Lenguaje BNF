@@ -97,3 +97,13 @@ EnteroSinSigno "]"
 | "float" <NombreVariable> "=" <Real>
 "int" <NombreVariable> "=" <ElementoEntero> <Operador_Aritmético>
 | "float" <NombreVariable> "=" <ElementoReal>
+<Operador_Aritmético> <ElementoReal>
+<AsignarTipo3>::= | <NombreVariable> "=" <NombreVariable>
+| "String" <NombreVariable> "=" " " " <Cadena> " " "
+//Ejemplo String Variable1 = "Nuevo Programa"
+| "boolean" <NombreVariable> "=" "True" | "False"
+<ImprimirEnPantalla>::= "Escribir" "<<" "(" <Contenido> ")" | <ImprimirEnPantalla> "Escribir"
+"(" <Contenido> ")"
+<Contenido>::= " " " <Cadena> " " " | <NombreVariable> | <Contenido> "+" <NombreVariable> |
+<Contenido> "+" " " " <Cadena> " " "
+<CapturarDatos>::= "Leer" ">>" <NombreVariable>
