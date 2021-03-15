@@ -21,6 +21,7 @@
                                                
 					       //CICLO DO WHILE//
 <CicloDoWhile>::= "do" "{"<BloqueLineas> "}" "while" <Condicion>
+							
 							//CICLO FOR//
 <Ciclo_FOR>::= "for" "(" <PrimerElemento> ; <SegundoElemento> ; <TercerElemento> ")" "{"
 <BloqueLineas> "}"
@@ -32,4 +33,13 @@
 <DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"
 <variableEntera>
 //
+
+                                                        //Ciclo Case//
+<CicloCase>::=
+"switch" "(" <variableEntera> ")" "{" <bloqueCase> "}"|"switch" "("
+<variableEntera> ")" "{" <bloqueCase> "}" <bloqueDefecto><bloqueDefecto>::= "default" ":" "{"<BloqueLineas>"}" <Fin_Linea>
+<bloqueCase>::= "case"<Entero> ":" "{" <Bloque linea> "}" <stopCase> |<bloqueCase> "case"
+<Entero> ":" "{" <BloqueLineas> "}"
+<stopCase>::= "break" <Fin_linea>
+<variableEntera>::= <NombreVariable>
 
