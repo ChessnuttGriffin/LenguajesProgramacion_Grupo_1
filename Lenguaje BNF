@@ -70,3 +70,13 @@
 <ElementosArregloFloat> "}"
 <ArregloString>::= "String" <NombreVariable> "[""]" "=" "{" <ElementosArregloString> "}"
 | "String" <NombreVariable> "[" EnteroSinSigno "]"
+
+<TipoDato>::= "int" | "float"
+<ElementosArregloEntero>::= <Entero> | <ElementosArregloEntero> "," <Entero>
+<ElementosArregloFloat>::= <Real> | <ElementosArregloReal> "," <Real>
+<ElementosArregloString>::= " ' " <Cadena> " ' " | <ElementosArregloString> "," " ' " <Cadena> " '
+"
+<ArregloBidimencional>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]" "["
+EnteroSinSigno "]"
+| "String" <NombreVariable> "[" EnteroSinSigno "]""["
+EnteroSinSigno "]"
