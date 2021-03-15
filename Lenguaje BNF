@@ -1,0 +1,13 @@
+﻿<Programa>::= <Estructura>
+<Estructura>::= "inicio()" "{" <BloqueLineas> "Fin}"
+<BloqueLineas>::= <LineaCom> | <BloqueLineas> <LineaCom> 
+<LineaCom>::= <Linea> <Fin_Linea> // Con esto se evita poner <Fin_Linea> al final de cada ciclo
+<Linea>::= <Variable> | <AsignarVariable> | <Instruccion>
+<Fin_Linea>::= ";"
+<Instruccion>::= <Ciclo_if> |  <CicloCase> | <Aritmetica> | <Ciclo_While> | <CicloDoWhile> | <Ciclo_FOR> | <Metodo> | <ImprimirEnPantalla> | <CapturarDatos> | <Arreglo>
+
+						//CICLO IF//
+<Ciclo_if>::= <CondicionalSimple> | CondicionalCompuesto
+<CondicionalSimple>::= "if" <Condicion> "{" <BloqueLineas> "}"
+<CondicionalCompuesto>::= "if" <Condicion> "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" |
+"if" <Condicion> "{" <BloqueLineas> "}" "elif" "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
