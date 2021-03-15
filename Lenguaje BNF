@@ -6,11 +6,13 @@
 <Fin_Linea>::= ";"
 <Instruccion>::= <Ciclo_if> |  <CicloCase> | <Aritmetica> | <Ciclo_While> | <CicloDoWhile> | <Ciclo_FOR> | <Metodo> | <ImprimirEnPantalla> | <CapturarDatos> | <Arreglo>
 
+
 						//CICLO IF//
 <Ciclo_if>::= <CondicionalSimple> | CondicionalCompuesto
 <CondicionalSimple>::= "if" <Condicion> "{" <BloqueLineas> "}"
 <CondicionalCompuesto>::= "if" <Condicion> "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" |
 "if" <Condicion> "{" <BloqueLineas> "}" "elif" "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
+
 
 						//CICLO WHILE//
 <Ciclo_While>::= "while" <Condicion> "{" <BloqueLineas> "}"
@@ -19,6 +21,7 @@
 				| <Cadena> "==" <Cadena> | <Cadena> "!=" <Cadena>
 <OperadorBool>::= "==" | "<" | ">" | "<=" | ">=" | "!=" 
                                                
+					       
 					       //CICLO DO WHILE//
 <CicloDoWhile>::= "do" "{"<BloqueLineas> "}" "while" <Condicion>
 							
@@ -30,11 +33,9 @@
 <TercerElemento>::= <AumentoFor> | <DecrementoFor>
 <AumentoFor>::= "++" | <variableEntera> "=+" <EnteroSinSigno> | <variableEntera> "=+"
 <variableEntera>
-<DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"
-<variableEntera>
-//
-
-                                                        //Ciclo Case//
+<DecrementoFor>::= "--" | <variableEntera> "=-" <EnteroSinSigno> | <variableEntera> "=-"<variableEntera>//
+                                                       
+						       //Ciclo Case//
 <CicloCase>::=
 "switch" "(" <variableEntera> ")" "{" <bloqueCase> "}"|"switch" "("
 <variableEntera> ")" "{" <bloqueCase> "}" <bloqueDefecto><bloqueDefecto>::= "default" ":" "{"<BloqueLineas>"}" <Fin_Linea>
@@ -43,11 +44,16 @@
 <stopCase>::= "break" <Fin_linea>
 <variableEntera>::= <NombreVariable>
 
-
 							// Metodos //
 <Metodo>::= <Retorno> <NombreMetodo> "(" <Parametros> ")" "{" <Cuerpo> <Return>
 <Fin_Linea> "}"
 <Cuerpo>::= <BloqueLineas>
 <Retorno>::= "int" | "String" | "float" | "boolean" | "ε"
 <Return>::= "return" "=" <Entero> | "ε" | "return" "=" <NombreVariable>
+
+						// llamado a metodos //
+<LlamadoMetodo>::= <nombreMetodo> "(" <parametros> ")"|<nombreMetodo> "("<ConjuntoVariables> ")"
+<NombreMetodo>::= <Cadena>
+<Parametros>::- "ε" | <ConjuntoVariables>
+<ConjuntoVariables>::- <Variable> | <ConjuntoVariables> "," <Variable>
 
