@@ -57,3 +57,16 @@
 <Parametros>::- "ε" | <ConjuntoVariables>
 <ConjuntoVariables>::- <Variable> | <ConjuntoVariables> "," <Variable>
 
+                                                 //Arreglos
+<Arreglo>::= <ArregloUnidimencional> | <ArregloBidimencional>
+<ValorArregloUnidimencional>::= <NombreVariable>"[" <EnteroSinSigno> "]"
+<ValorArregloBidimencional>::= <NombreVariable>"[" <EnteroSinSigno> "]" "["
+<EnteroSinSigno> "]"
+<ArregloUnidimencional>::= <ArregloNoString> | <ArregloString>
+<ArregloNoString>::= <TipoDato> <NombreVariable> "[" EnteroSinSigno "]"
+| "int" <NombreVariable> "[""]" "=" "{"
+<ElementosArregloEntero> "}"
+| "float" <NombreVariable> "[""]" "=" "{"
+<ElementosArregloFloat> "}"
+<ArregloString>::= "String" <NombreVariable> "[""]" "=" "{" <ElementosArregloString> "}"
+| "String" <NombreVariable> "[" EnteroSinSigno "]"
