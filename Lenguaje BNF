@@ -12,5 +12,9 @@
 <CondicionalCompuesto>::= "if" <Condicion> "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" |
 "if" <Condicion> "{" <BloqueLineas> "}" "elif" "{" <BloqueLineas> "}" "else" "{" <BloqueLineas> "}" 
 
-
-fin
+						//CICLO WHILE//
+<Ciclo_While>::= "while" <Condicion> "{" <BloqueLineas> "}"
+<Condicion>::= "(" <Booleando> ")"
+<Booleano>::= "1" | "0" | "True" | "False" | <TerminoSinCadena> <OperadorBool> <TerminoSinCadena> 
+				| <Cadena> "==" <Cadena> | <Cadena> "!=" <Cadena>
+<OperadorBool>::= "==" | "<" | ">" | "<=" | ">=" | "!=" 
