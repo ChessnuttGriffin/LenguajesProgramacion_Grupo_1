@@ -18,3 +18,6 @@
 <Booleano>::= "1" | "0" | "True" | "False" | <TerminoSinCadena> <OperadorBool> <TerminoSinCadena> 
 				| <Cadena> "==" <Cadena> | <Cadena> "!=" <Cadena>
 <OperadorBool>::= "==" | "<" | ">" | "<=" | ">=" | "!=" 
+                                               
+					       //CICLO DO WHILE//
+<CicloDoWhile>::= "do" "{"<BloqueLineas> "}" "while" <Condicion>
