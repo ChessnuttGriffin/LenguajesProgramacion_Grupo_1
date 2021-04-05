@@ -44,6 +44,47 @@ void imprimirIdentificadoresNoValidos(){
    }
 }
 
+// Metodo para verificar si el token formado cumple para ser un identificador
+bool verificarIdentificador(char palabra[]){
+	string auxPalabra = palabra;
+   esIdentificador = false;
+   short estado = 0;
+   char *p = palabra;
+   while(*p != '\0')
+   {
+   	switch(estado)
+      {
+      	case 0:
+         	if((isalpha(*p)) || (*p=='_')){
+            	estado = 1;
+               esIdentificador = true;
+            }
+            else{
+            	estado = 2;
+               esIdentificador = false;
+            }
+            p++;
+         break;
+         case 1:
+         	if((isalpha(*p)) || (isdigit(*p)) || (*p=='_')){
+            	estado = 1;
+               esIdentificador = true;
+            }
+            else{
+            	estado = 2;
+               esIdentificador = false;
+            }
+            p++;
+         break;
+         case 2:
+				//No es un identificador
+            esIdentificador = false;
+            *p = '\0';
+         break;
+      }
+   }
+   return esIdentificador;
+}
 
 bool verificarNumero(char palabra[]){
 	string auxPalabra = palabra;
