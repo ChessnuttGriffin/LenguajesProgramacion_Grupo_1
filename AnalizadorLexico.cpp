@@ -19,6 +19,19 @@ int main (){
     return 0;
 }
 
+int auxTR=0;
+int auxTI=0;
+int auxTN=0;
+int auxTNV=0;
+
+bool verificarNumero(char palabra[]);
+bool verificarIdentificador(char palabra[]);
+void imprimirIdentificadoresNoValidos();
+bool palabraReservada(char palReservada[]);
+
+
+
+
 bool palabraReservada(char palReservada[]){ //Metodo para verificar si la palabra pertenece a una palabra reservada
     bool reservada = false; //POr defecto, la palabra no es reservada
     string str(palReservada);
