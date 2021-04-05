@@ -31,6 +31,18 @@ bool palabraReservada(char palReservada[]){ //Metodo para verificar si la palabr
         }
     }
 }
+void imprimirIdentificadoresNoValidos(){
+	puts(" ");
+	printf("********************************* MENSAJES *********************************\n");
+   if(auxTNV == 0){
+   	printf("\t\t 0 Errores, programa fuente exitoso...");
+   }else{
+   	for(int i=0;i<auxTNV;i++)
+	   {
+   		printf("\t\tERROR: No es Valido el Token: %s \n",tokensNoValidos[i]);
+   	}
+   }
+}
 
 
 bool verificarNumero(char palabra[]){
