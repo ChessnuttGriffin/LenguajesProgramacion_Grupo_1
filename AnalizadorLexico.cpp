@@ -32,3 +32,53 @@ bool palabraReservada(char palReservada[]){ //Metodo para verificar si la palabr
     }
 }
 
+
+bool verificarNumero(char palabra[]){
+	string auxPalabra = palabra;
+   esNumero = false;
+	short estado = 0,cont=0;
+   char *p = palabra;
+	while(*p!='\0')
+   {
+   	switch(estado)
+      {
+      	case 0:
+            if(isdigit(*p)){
+					estado = 0;
+               esNumero = true;
+               cont++;
+            }
+            else if( ((*p == '.') && (cont==0)) || (isalpha(*p))){
+					estado = 2;
+               esNumero=false;
+            }else if(*p=='.'){
+					estado = 1;
+            	esNumero = false;
+            }
+         	p++;
+         break;
+         case 1:
+            if(isdigit(*p)){
+            	estado = 1;
+               esNumero = true;
+            }else
+            {
+            	estado = 2;
+               esNumero = false;
+            }
+         	p++;
+         break;
+         case 2:
+				esNumero = false;
+         	*p = '\0';
+         break;
+      }
+   }
+   if(esNumero == false){
+      if(auxPalabra != ""){
+   	   tokensNoValidos[auxTNV] = auxPalabra;
+	      auxTNV++;
+      }
+   }
+ 	return esNumero;
+}
