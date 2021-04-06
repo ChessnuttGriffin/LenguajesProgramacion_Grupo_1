@@ -201,12 +201,18 @@ int alfabeto(char c) {// obtener la posicion de cada caracter
 
         while (!fichero.eof()) {//mientras fichero no llegue al final
         	listarecorrido.push_back(caracter);
-/*        	listarecorrido.push_back(caracter);
-        	int pos= alfabeto(caracter,xpos);
-        	//cout<<"la posicion>  "<<pos<<endl;
 
-        	if (pos == 59) {
-                linea++;
+            fichero.get(caracter);
 
-            }
+
+
+
+
+
+        }
+
+    }
+    fichero.close();
+
+}
 }
