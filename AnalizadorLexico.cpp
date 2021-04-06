@@ -150,7 +150,7 @@ bool verificarNumero(char palabra[]){
 
 	int comprobacion=0;
 int cont=0;
-int alfabeto(char c) {//Metodo para obtener la posicion de cada caracter dentro de nuestro alfabeto
+int alfabeto(char c) {// obtener la posicion de cada caracter 
 
 
 	int d = listarecorrido.size();
