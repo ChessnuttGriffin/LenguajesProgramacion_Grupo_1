@@ -147,4 +147,45 @@ bool verificarNumero(char palabra[]){
       }
    }
  	return esNumero;
+
+	int comprobacion=0;
+int cont=0;
+int alfabeto(char c) {//Metodo para obtener la posicion de cada caracter dentro de nuestro alfabeto
+
+
+	int d = listarecorrido.size();
+	cout<<"Lista Recorrido>  "<<d<<endl;
+	cout<<"Lo que recibe xpos>  "<<po<<endl;
+	if(po!=-1){
+		cont--;
+		po=-1;
+		x=-1;
+		comprobacion++;
+
+	}
+	cout<<"Lista Recorrido>  "<<d<<endl;
+
+	for(int j=cont ; j<= d ; j++){
+		cout<<"Valor de J>  "<<j<<endl;
+		cont++;
+		cout<<"Valor de cont>  "<<cont<<endl;
+
+		for (int i = 0; i <= 62; i++) {
+			cout<<listarecorrido[j]<<endl;
+
+			if (c == alfa[i]) {
+
+				return i;
+
+				break;
+			}
+		}
+
+
+
+    }
+
+    return 0;
+
+}
 }
