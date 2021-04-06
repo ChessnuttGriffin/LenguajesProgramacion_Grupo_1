@@ -188,4 +188,25 @@ int alfabeto(char c) {// obtener la posicion de cada caracter
     return 0;
 
 }
+	void metodoArchivo() {//Lee caracter por caracter del Archivo .txt
+    //int linea = 0;
+    ifstream fichero; //variable fichero para leer los datos
+    fichero.open(("lenguaje.txt"));
+    fichero.get(caracter);
+
+    if (fichero.fail()) {// si fichero no falla coge un letra dle fichero
+        cout << "Error al abrir el archivo lenguaje.txt" << endl;
+
+    } else {
+
+        while (!fichero.eof()) {//mientras fichero no llegue al final
+        	listarecorrido.push_back(caracter);
+/*        	listarecorrido.push_back(caracter);
+        	int pos= alfabeto(caracter,xpos);
+        	//cout<<"la posicion>  "<<pos<<endl;
+
+        	if (pos == 59) {
+                linea++;
+
+            }
 }
