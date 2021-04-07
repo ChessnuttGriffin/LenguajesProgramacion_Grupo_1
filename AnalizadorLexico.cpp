@@ -22,8 +22,10 @@ string tokenIdentificadores[MAX];
 string tokenReservadas[MAX];
 string tokensNoValidos[MAX];
 
-
+bool verificarNumero(char palabra[]);
+bool verificarIdentificador(char palabra[]);
 bool verificarReservada(char palabra[]);
+
 
 int main(){
 
