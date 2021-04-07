@@ -44,6 +44,40 @@ int main(){
    }
 
 } 
+//Este bucle es el que recorre cada caracter de la entrada(programa fuente) que ingreso el usuario, el procedimiento dentro del bucle es para formar los tokens necesarios.
+   while(*p!='\0'){
+		if((*p != ' ') && (*p !=',')){ 	//Primero revisa que sea distinto de un espacio ' ' y una coma ','
+			if((p== ';') || (*p=='"') || (*p=='(') || (*p==')') || (*p=='+') || (*p=='-') || (*p=='') || (*p=='/') || (*p=='#') || (*p=='<') || (*p=='>') || (*p=='=')){
+			   tokenSimbolos[indexSimbolos] = *p;
+				indexSimbolos++;
+			}else{
+				palabra[indexPalabra] = *p;
+				auxWord[indexPalabra] = *p;	//La razon de usar este arreglo es para mandar como parametro al metodo verificarNumero()... debido a un problema de programacion.
+				indexPalabra++;
+			}
+      }
+      else if((*p ==' ') || (*p ==',')){
+      	// Guarda la palabra en los respectivos tokens segun las funciones hayan examinado la palabra.
+         if(verificarReservada(palabra) == true){
+			tokenReservadas[auxTR] = palabra;
+          	auxTR++;
+         }else if(verificarIdentificador(palabra) == true){
+         	tokenIdentificadores[auxTI] = palabra;
+		    auxTI++;
+         }else if(verificarNumero(auxWord)==true){
+         	tokenNumeros[auxTN] = auxWord;
+		    auxTN++;
+         }
+         for(int i=0;i<MAX;i++){
+			 palabra[i]='\0';
+		 }	//Para vaciar el arreglo de la palabra
+         for(int i=0;i<MAX;i++){
+			 auxWord[i]='\0';
+	     }	//Para vaciar el arreglo del arreglo auxiliar
+         indexPalabra=0;
+      }
+      p++;
+   }
 
 // Metodo para verificar si el token formado corresponde a una palabra reservada
    bool verificarReservada(char palabra[]){
