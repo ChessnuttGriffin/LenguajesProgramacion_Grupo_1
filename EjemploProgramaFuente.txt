@@ -1,0 +1,13 @@
+inicio(){
+float numCaminar=3.5;
+float numGiro=20.0;
+int numExtencion=56;
+desplazar(numCaminar);
+tomarFoto();
+if(numCaminar<10){inclinarEje(numCaminar)};
+int i=0;
+for(i;i<numCaminar;i++){enviarUbicacion(); numExtencio=10;};
+tomarFoto();
+int desplazar(numCaminar){return=0};
+tomarFoto(){};
+Fin}
