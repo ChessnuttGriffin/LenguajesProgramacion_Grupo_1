@@ -40,7 +40,9 @@ int main(){
    for(int i=0;i<MAX;i++){
 	palabra[i] = '\0';
    }
-	
+
+} 
+
 // Metodo para verificar si el token formado corresponde a una palabra reservada
    bool verificarReservada(char palabra[]){
 	int comp;
@@ -55,5 +57,3 @@ int main(){
 	 }
 	 return esReservada;
    }
-
-} 
