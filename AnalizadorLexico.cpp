@@ -23,6 +23,8 @@ string tokenReservadas[MAX];
 string tokensNoValidos[MAX];
 
 
+bool verificarReservada(char palabra[]);
+
 int main(){
 
    for(int i=0;i<MAX;i++){
