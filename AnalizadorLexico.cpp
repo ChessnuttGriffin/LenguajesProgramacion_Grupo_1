@@ -23,20 +23,33 @@ string tokenReservadas[MAX];
 string tokensNoValidos[MAX];
 
 
-
 int main(){
 
    for(int i=0;i<MAX;i++){
-	   tokenReservadas[i] = "";
+	tokenReservadas[i] = "";
    } // Fin del ciclo
 
    for(int i=0;i<MAX;i++){
-	   tokensNoValidos[i] = "";
+	tokensNoValidos[i] = "";
    }
 
    for(int i=0;i<MAX;i++){
-		palabra[i] = '\0';
+	palabra[i] = '\0';
+   }
+	
+// Metodo para verificar si el token formado corresponde a una palabra reservada
+   bool verificarReservada(char palabra[]){
+	int comp;
+	bool esReservada=false;
+	string str(palabra);
+	for(int i=0; i<MAX_RES; i++){
+		comp = strcmp(PalabrasReservadas[i],palabra);
+		if(comp == 0){
+		    esReservada = true;
+		    break;
+		}
+	 }
+	 return esReservada;
    }
 
-
-}
+} 
