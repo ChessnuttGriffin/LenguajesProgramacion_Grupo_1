@@ -42,8 +42,6 @@ int main(){
    for(int i=0;i<MAX;i++){
 	palabra[i] = '\0';
    }
-
-} 
 //Este bucle es el que recorre cada caracter de la entrada(programa fuente) que ingreso el usuario, el procedimiento dentro del bucle es para formar los tokens necesarios.
    while(*p!='\0'){
 		if((*p != ' ') && (*p !=',')){ 	//Primero revisa que sea distinto de un espacio ' ' y una coma ','
@@ -78,6 +76,9 @@ int main(){
       }
       p++;
    }
+
+} 
+
 
 // Metodo para verificar si el token formado corresponde a una palabra reservada
    bool verificarReservada(char palabra[]){
