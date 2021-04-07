@@ -29,6 +29,18 @@ bool verificarReservada(char palabra[]);
 
 int main(){
 
+	unsigned char entrada[MAX];
+   char *p = entrada;
+   printf("Ingrese la primera linea del lenguaje: ");
+   fflush(stdin);
+   gets(entrada);
+   fflush(stdin);
+   clrscr();
+
+   char palabra[MAX];
+   int indexPalabra=0;
+   int indexSimbolos = 0;
+
    for(int i=0;i<MAX;i++){
 	tokenReservadas[i] = "";
    } // Fin del ciclo
