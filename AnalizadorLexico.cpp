@@ -88,7 +88,16 @@ int main(){
       }
       p++;
    }
-
+   if(verificarReservada(palabra) == true){
+	tokenReservadas[auxTR] = palabra;
+	auxTR++;
+   }else if(verificarIdentificador(palabra) == true){
+		tokenIdentificadores[auxTI] = palabra;
+		auxTI++;
+	 }else if(verificarNumero(auxWord)==true){
+		tokenNumeros[auxTN] = auxWord;
+		auxTN++;
+	 }
 } 
 
 
